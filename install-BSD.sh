@@ -44,8 +44,8 @@ FTPIPV6="0"
 
 ##################################################################
 ##################################################################
-##					NE PAS MODIFIER LA SUITE 					##
-##				   DO NOT MODIFY THE FOLLOWING					##
+##		 NE PAS MODIFIER LA SUITE 			##
+##		DO NOT MODIFY THE FOLLOWING			##
 ##################################################################
 ##################################################################
 ## DON'T CHANGE DBNAME* IF YOU DON'T KNOW WHAT YOU DO
@@ -57,7 +57,7 @@ if [ $MODUSERSQL = 0 ]; then
 	PASSDB=$ROOTPASSDB ;
 fi
 CHEMIN=$(pwd)
-if [ 1 = 2 ] ; then
+
 #============================
 # Update ports et upgrade
 #============================
@@ -133,6 +133,7 @@ echo "suhosin.memory.limit = 512M" >> /usr/local/etc/php.ini
 
 
 portsclean -C
+dc $CHEMIN
 hash -r
 
 #############################################################################
