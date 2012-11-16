@@ -244,15 +244,6 @@ ln -s /usr/local/etc/zpanel/configs/apache/httpd.conf /usr/local/etc/apache22/In
 php /usr/local/etc/zpanel/panel/bin/daemon.php
 
 echo "Apache ok";
-#============================
-#POSTFIX-DOVECOT (Ubuntu 11.10 uses Dovecot2): 
-#============================
-##	apt-get install  postfix-mysql dovecot-mysql dovecot-imapd dovecot-pop3d    (choose 'internet-site)
-#postfix dovecot-commonlibsasl2-modules libsasl2-modules-sql
-#cd /usr/ports/mail/postfix28
-#make WITH_DOVECOT2=yes WITH_MYSQL=yes WITH_TLS=yes WITH_SASL2=yes BATCH=YES install
-#cd /usr/ports/mail/dovecot2
-#make install
 
 mkdir -p /var/zpanel/vmail
 ## TODO need 777 security?
