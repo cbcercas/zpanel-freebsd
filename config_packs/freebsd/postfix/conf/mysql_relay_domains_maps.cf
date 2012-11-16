@@ -1,0 +1,8 @@
+user = USERDB
+password = PASSDB
+hosts = localhost
+dbname = zpanel_postfix
+table = domain
+select_field = domain
+where_field = domain
+additional_conditions = and backupmx = '1'

@@ -1,0 +1,7 @@
+user = USERDB
+password = PASSDB
+hosts = localhost
+dbname = zpanel_postfix
+table = alias
+select_field = goto
+where_field = address

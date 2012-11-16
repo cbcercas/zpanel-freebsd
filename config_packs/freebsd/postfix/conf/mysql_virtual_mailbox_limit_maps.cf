@@ -1,0 +1,8 @@
+user = USERDB
+password = PASSDB
+hosts = localhost
+dbname = zpanel_postfix
+table = mailbox
+select_field = quota
+where_field = username
+#additional_conditions = and active = '1'
