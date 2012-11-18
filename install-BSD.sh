@@ -317,8 +317,8 @@ mkdir /var/zpanel/logs/bind
 touch /var/zpanel/logs/bind/bind.log
 chmod -R 777 /var/zpanel/logs/bind/bind.log
 ln /var/zpanel/logs/bind/bind.log /var/named/var/log/bind.log
-echo "include \"/var/named/etc/namedb/zpanel.log.conf\";" >> /etc/namedb/named.conf
-echo "include \"/var/named/etc/namedb/zpanel.named.conf\";" >> /etc/namedb/named.conf
+echo "include \"/etc/namedb/zpanel.log.conf\";" >> /etc/namedb/named.conf
+echo "include \"/etc/namedb/zpanel.named.conf\";" >> /etc/namedb/named.conf
 ln /usr/local/etc/zpanel/configs/bind/etc/named.conf /var/named/etc/namedb/zpanel.named.conf
 ln /usr/local/etc/zpanel/configs/bind/etc/log.conf /var/named/etc/namedb/zpanel.log.conf
 ln -s /usr/sbin/named-checkconf /usr/bin/named-checkconf
