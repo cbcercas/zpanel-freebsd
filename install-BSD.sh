@@ -251,7 +251,7 @@ chmod -R 777 /var/zpanel/vmail
 chmod -R g+s /var/zpanel/vmail
 pw groupadd vmail -g 5000
 pw useradd vmail -u 5000 -g vmail -s /usr/sbin/nologin -d /nonexistent -c "Virtual Mail Owner"
-chown -R vmail.vmail /var/zpanel/vmail
+chown -R vmail:vmail /var/zpanel/vmail
 
 
 # Postfix Master.cf
@@ -350,6 +350,6 @@ rm /root/.history
 
 echo "Server will need a reboot for postfix to be fully functional"
 #REBOOT SERVER
-echo "Browse to http://CONTROLPANEL.YOURDOMAIN.COM (Or by your server IP) http://xxx.xxx.xxx.xxx"
+echo "Browse to http://$(HOSTNAME) (Or by your server IP) http://xxx.xxx.xxx.xxx"
 echo "USER: zadmin"
 echo "PASS: password (Change on 1st login!)"
