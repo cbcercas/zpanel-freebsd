@@ -66,7 +66,7 @@ portsnap fetch update
 
 cd /usr/ports/ports-mgmt/portupgrade
 make BATCH=yes install clean
-portupgrade -a
+portupgrade -a --batch
 
 #============================
 #Install the base packages:-
