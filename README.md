@@ -6,6 +6,7 @@ This script install and configure all you need for ZpanelX
 Requirement:
 ==============
 *shell/bash  
+*ftp/wget  
 *an editor  
 
  INSTALL
