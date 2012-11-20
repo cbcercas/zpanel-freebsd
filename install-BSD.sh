@@ -354,6 +354,6 @@ rm /root/.history
 
 echo "Server will need a reboot for postfix to be fully functional"
 #REBOOT SERVER
-echo "Browse to http://$(HOSTNAME) (Or by your server IP) http://xxx.xxx.xxx.xxx"
+echo "Browse to http://$HOSTNAME (Or by your server IP) http://xxx.xxx.xxx.xxx"
 echo "USER: zadmin"
 echo "PASS: password (Change on 1st login!)"
