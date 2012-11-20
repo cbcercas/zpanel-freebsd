@@ -70,6 +70,7 @@ fi
 cd /usr/ports/ports-mgmt/portupgrade
 make BATCH=yes install clean
 portupgrade -a --batch
+portupgrade -fo devel/pkgconf pkg-config-\*
 
 #============================
 #Install the base packages:-
