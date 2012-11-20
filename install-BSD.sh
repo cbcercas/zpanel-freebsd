@@ -61,6 +61,7 @@ CHEMIN=$(pwd)
 #============================
 # Update ports et upgrade
 #============================
+echo "WITHOUT_X11= yes" >> /etc/make.conf
 if [ -d "/usr/ports" ]; then 
 	portsnap fetch update;
 else
