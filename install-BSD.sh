@@ -307,9 +307,9 @@ fi
         sed -i -e "s/FTPUSERDB/${FTPUSERDB}/g" /usr/local/etc/zpanel/configs/proftpd/proftpd-mysql.conf
         sed -i -e "s/FTPPASSDB/${FTPPASSDB}/g" /usr/local/etc/zpanel/configs/proftpd/proftpd-mysql.conf
 
-touch /usr/local/etc/proftpd.conf
+#touch /usr/local/etc/proftpd.conf
 if [ ${FTPIPV6} = 0 ]; then
-	echo "UseIPv6 off" >> /etc/zpanel/conf/proftpd.conf;
+	echo "UseIPv6 off" >> /usr/local/etc/zpanel/conf/proftpd.conf;
 fi
 echo "include /etc/zpanel/configs/proftpd/proftpd-mysql.conf" >> /usr/local/etc/proftpd/proftpd.conf
 touch /var/zpanel/logs/proftpd
