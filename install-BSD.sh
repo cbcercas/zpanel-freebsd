@@ -133,7 +133,7 @@ echo "suhosin.memory.limit = 512M" >> /usr/local/etc/php.ini
 
 
 portsclean -C
-dc $CHEMIN
+cd $CHEMIN
 hash -r
 
 #############################################################################
