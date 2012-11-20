@@ -77,9 +77,7 @@ portupgrade -a --batch
 # Proftpd
 cd /usr/ports/databases/proftpd-mod_sql_mysql
 make BATCH=yes install clean
-if [ ${FTPIPV6} = 0 ]; then
-	echo "UseIPv6 off" >> /etc/zpanel/conf/proftpd.conf;
-fi
+
 # MySQL Server insatll:-
 cd /usr/ports/databases/mysql55-server/
 make BATCH=yes install clean
@@ -293,7 +291,7 @@ echo "postfix ok";
 #=================
 ## TODO changer ServerAdmin  root@localhost dans proftpd-mysql.conf
 pw groupadd ftpgroup -g 2001
-pw useradd ftpuser -u 2001 -s //usr/sbin/nologin -d /nonexistent -c "proftpd user" -g ftpgroup
+pw useradd ftpuser -u 2001 -s /usr/sbin/nologin -d /nonexistent -c "proftpd user" -g ftpgroup
 
 if [ ${MODUSERFTP} = 1 ]; then
         ## Create FTPUSERDB
@@ -308,6 +306,9 @@ fi
         sed -i -e "s/FTPPASSDB/${FTPPASSDB}/g" /usr/local/etc/zpanel/configs/proftpd/proftpd-mysql.conf
 
 touch /usr/local/etc/proftpd.conf
+if [ ${FTPIPV6} = 0 ]; then
+	echo "UseIPv6 off" >> /etc/zpanel/conf/proftpd.conf;
+fi
 echo "include /etc/zpanel/configs/proftpd/proftpd-mysql.conf" >> /usr/local/etc/proftpd/proftpd.conf
 touch /var/zpanel/logs/proftpd
 chmod -R 644 /var/zpanel/logs/proftpd
