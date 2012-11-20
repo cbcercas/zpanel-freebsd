@@ -61,8 +61,11 @@ CHEMIN=$(pwd)
 #============================
 # Update ports et upgrade
 #============================
-portsnap fetch extract
-portsnap fetch update
+if [ -d "/usr/ports" ]; then 
+	portsnap fetch update;
+else
+	portsnap fetch extract;
+fi
 
 cd /usr/ports/ports-mgmt/portupgrade
 make BATCH=yes install clean
