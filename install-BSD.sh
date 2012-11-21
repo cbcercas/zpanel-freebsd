@@ -298,7 +298,7 @@ pw useradd ftpuser -u 2001 -s /usr/sbin/nologin -d /nonexistent -c "proftpd user
 if [ ${MODUSERFTP} = 1 ]; then
         ## Create FTPUSERDB
         echo "GRANT USAGE ON *.* TO '${FTPUSERDB}'@'localhost' IDENTIFIED BY '${FTPPASSDB}';" | mysql -uroot -p${ROOTPASSDB};
-        echo "GRANT ALL PRIVILEGES ON zpanel_proftpd.* TO '${USERDB}'@'localhost';" | mysql -uroot -p${ROOTPASSDB};
+        echo "GRANT ALL PRIVILEGES ON zpanel_proftpd.* TO '${FTPUSERDB}'@'localhost';" | mysql -uroot -p${ROOTPASSDB};
         else
                 FTPUSERDB=$USERDB;
                 FTPPASSDB=$PASSDB;
