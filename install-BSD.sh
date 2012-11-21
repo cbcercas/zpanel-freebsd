@@ -285,7 +285,7 @@ ln -s /usr/local/etc/zpanel/configs/postfix/conf/main.cf /usr/local/etc/postfix/
 ln -s /usr/local/etc/zpanel/configs/dovecot2/dovecot.conf /usr/local/etc/dovecot/dovecot.conf
 
 sed -i -e "s/control.yourdomain.com/${MYHOSTNAME}/g" /usr/local/etc/zpanel/configs/postfix/conf/main.cf
-sed -i -e "s/youromain.com/${MYDOMAIN}/g" /usr/local/etc/zpanel/configs/postfix/conf/main.cf
+sed -i -e "s/yourdomain.com/${MYDOMAIN}/g" /usr/local/etc/zpanel/configs/postfix/conf/main.cf
 
 echo "postfix ok";
 
