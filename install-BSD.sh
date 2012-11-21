@@ -345,7 +345,7 @@ echo "zsudo ok";
 #Setup the CRON job for the zdaemon:-
 #====================================
 #touch /etc/cron.d/zdaemon
-echo "*/5 * * * * root /usr/bin/php -q /etc/zpanel/panel/bin/daemon.php >> /dev/null 2>&1" >> /etc/crontab
+echo "*/5 * * * * root /usr/bin/php -q /usr/local/etc/zpanel/panel/bin/daemon.php >> /dev/null 2>&1" >> /etc/crontab
 
 #Registering the zppy client:-
 #=============================
