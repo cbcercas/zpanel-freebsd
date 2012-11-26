@@ -1,6 +1,7 @@
 Zpanel-freebsd
-Version 0.22
 ===============
+Version 0.22
+
 This script install and configure all you need for ZpanelX
 
 
