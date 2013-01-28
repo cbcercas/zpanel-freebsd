@@ -312,9 +312,9 @@ fi
 
 #touch /usr/local/etc/proftpd.conf
 if [ ${FTPIPV6} = 0 ]; then
-	echo "UseIPv6 off" >> /etc/zpanel/configs/proftpd/proftpd-mysql.conf;
+	echo "UseIPv6 off" >> /usr/local/etc/zpanel/configs/proftpd/proftpd-mysql.conf;
 fi
-echo "include /etc/zpanel/configs/proftpd/proftpd-mysql.conf" >> /usr/local/etc/proftpd/proftpd.conf
+echo "include /usr/local/etc/zpanel/configs/proftpd/proftpd-mysql.conf" >> /usr/local/etc/proftpd/proftpd.conf
 touch /var/zpanel/logs/proftpd
 chmod -R 644 /var/zpanel/logs/proftpd
 
@@ -352,13 +352,13 @@ echo "*/5 * * * * root /usr/bin/php -q /usr/local/etc/zpanel/panel/bin/daemon.ph
 
 #Registering the zppy client:-
 #=============================
-ln -s /etc/zpanel/panel/bin/zppy /usr/bin/zppy
+ln -s /usr/local/etc/zpanel/panel/bin/zppy /usr/bin/zppy
 
 ## SECURITY
 rm /root/.history
 
-echo "Server will need a reboot for postfix to be fully functional"
+echo "Server will need a reboot to be fully functional"
 #REBOOT SERVER
-echo "Browse to http://$HOSTNAME (Or by your server IP) http://xxx.xxx.xxx.xxx"
-echo "USER: zadmin"
-echo "PASS: password (Change on 1st login!)"
+echo "Browse to http://$HOSTNAME (Or by your server IP) http://`ifconfig  | grep -E 'inet.[0-9]' | grep -v '127.0.0.1' | awk '{ print $2}'`"
+echo "Login Username: zadmin"
+echo "Password: password (Change on 1st login!)"
