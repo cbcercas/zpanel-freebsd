@@ -1,6 +1,6 @@
 Zpanel-freebsd
 ===============
-Version 0.22
+Version 0.23
 
 This script install and configure all you need for ZpanelX
 
@@ -8,14 +8,12 @@ This script install and configure all you need for ZpanelX
 Requirement:
 ==============
 *shell/bash  
-*ftp/wget  
-*an editor  
 
  INSTALL
 =========
-mkdir -p tmp/zpanelx && cd tmp  
-wget http://sourceforge.net/projects/zpanelcp/files/releases/10.0.0/zpanelx-1_0_0.zip  
-wget --no-check-certificate https://github.com/cbcercas/zpanel-freebsd/archive/master.zip  
+mkdir -p /usr/local/src/zpanelx && cd /usr/local/src/  
+fetch http://sourceforge.net/projects/zpanelcp/files/releases/10.0.0/zpanelx-1_0_0.zip  
+fetch https://github.com/cbcercas/zpanel-freebsd/archive/master.zip  
 unzip -d zpanelx zpanelx-1_0_0.zip && unzip master.zip  
 cp -R zpanel-freebsd-master/* zpanelx/etc/build/  
 rm -R zpanel-freebsd-master master.zip zpanelx-1_0_0.zip  
