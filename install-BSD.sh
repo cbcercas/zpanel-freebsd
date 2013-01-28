@@ -61,6 +61,9 @@ CHEMIN=$(pwd)
 #============================
 # Update ports et upgrade
 #============================
+freebsd-update fetch
+freebsd-update install
+
 echo "WITHOUT_X11= yes" >> /etc/make.conf
 if [ -d "/usr/ports" ]; then 
 	portsnap fetch update;
