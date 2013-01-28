@@ -1,3 +1,4 @@
+
 #!/usr/local/bin/bash
 
 ## check if script run as root
@@ -17,7 +18,7 @@ IP=`wget -O - checkip.dyndns.org | sed -e 's/[^:]*: //' -e 's/<.*$//'`
 
 trap "rm -f $tempfile1 $tempfile2 $tempfile3 $tempfile4" 0 1 2 5 15
 
-  echo "HOSTNAME MYNAME" > $tempfile1
+	echo "HOSTNAME MYNAME" > $tempfile1
 	echo "MY_DOMAIN MYDOMAIN" >> $tempfile1
 	echo "MYSQL_HOST LOCALHOST" >> $tempfile1
 	echo "MYSQL_ROOT_PASSWORD RPASSWORD" >> $tempfile1
@@ -387,9 +388,6 @@ _installl() {
 		##============================
 		## Update ports et upgrade
 		##============================
-		freebsd-update fetch
-		freebsd-update install
-
 		echo "WITHOUT_X11=yes" >> /etc/make.conf
 		if [ -d "/usr/ports" ]; then 
 			portsnap fetch update;
@@ -634,9 +632,9 @@ _installl() {
 
 		#touch /usr/local/etc/proftpd.conf
 		if [ ${FTP_IPV6} = 0 ]; then
-			echo "UseIPv6 off" >> /etc/zpanel/configs/proftpd/proftpd-mysql.conf;
+			echo "UseIPv6 off" >> /usr/local/etc/zpanel/configs/proftpd/proftpd-mysql.conf;
 		fi
-		echo "include /etc/zpanel/configs/proftpd/proftpd-mysql.conf" >> /usr/local/etc/proftpd/proftpd.conf
+		echo "include /usr/local/etc/zpanel/configs/proftpd/proftpd-mysql.conf" >> /usr/local/etc/proftpd/proftpd.conf
 		touch /var/zpanel/logs/proftpd
 		chmod -R 644 /var/zpanel/logs/proftpd
 
@@ -681,9 +679,9 @@ _installl() {
 
 		echo "Server will need a reboot for postfix to be fully functional"
 		#REBOOT SERVER
-		echo "Browse to http://$HOSTNAME (Or by your server IP) http://xxx.xxx.xxx.xxx"
-		echo "USER: zadmin"
-		echo "PASS: password (Change on 1st login!)"
+		echo "Browse to http://$HOSTNAME (Or by your server IP) http://`ifconfig  | grep -E 'inet.[0-9]' | grep -v '127.0.0.1' | awk '{ print $2}'`"
+		echo "Login Username: zadmin"
+		echo "Password: password (Change on 1st login!)"
 
 }
 
