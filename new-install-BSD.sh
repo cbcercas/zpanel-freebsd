@@ -1,4 +1,3 @@
-
 #!/usr/local/bin/bash
 
 ## check if script run as root
@@ -368,7 +367,7 @@ _installperso () {
 	_install;
 }
 
-_installl() {
+_install() {
 	## Export des variable
 		while read line ;do
 			a=( $line );
