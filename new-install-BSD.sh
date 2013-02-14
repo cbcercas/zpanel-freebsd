@@ -569,8 +569,13 @@ _install() {
 
 		echo "Apache ok";
 
+		#============================
+		#Configuration Postfix 
+		#============================
+
+
 		mkdir -p /var/zpanel/vmail
-		## TODO need 777 security?
+		## TODO need 777 ? security?
 		chmod -R 777 /var/zpanel/vmail
 		chmod -R g+s /var/zpanel/vmail
 		pw groupadd vmail -g 5000
@@ -610,8 +615,10 @@ _install() {
 
 		echo "postfix ok";
 
-		## Configuration ProFTPD
-		#=================
+		#=======================
+		# Configuration ProFTPD
+		#=======================
+
 		## TODO changer ServerAdmin  root@localhost dans proftpd-mysql.conf
 		pw groupadd ftpgroup -g 2001
 		pw useradd ftpuser -u 2001 -s /usr/sbin/nologin -d /nonexistent -c "proftpd user" -g ftpgroup
@@ -638,7 +645,8 @@ _install() {
 
 		echo "proftpd ok";
 
-		#Install BIND DNS Server:-
+		#=========================
+		#Install Namedb DNS Server:
 		#=========================
 		mkdir /var/zpanel/logs/bind
 		touch /var/zpanel/logs/bind/bind.log
