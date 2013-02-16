@@ -13,7 +13,7 @@ tempfile3=`ZpanelX 2>/dev/null` || tempfile3=/tmp/ZpanelX_3_$$
 tempfile4=`ZpanelX 2>/dev/null` || tempfile4=/tmp/ZpanelX_4_$$
 touch $tempfile1 $tempfile2 $tempfile3 $tempfile4
 chmod 700 $tempfile1 $tempfile2 $tempfile3 $tempfile4
-IP=`wget -O - checkip.dyndns.org | sed -e 's/[^:]*: //' -e 's/<.*$//'`
+IP=`curl ifconfig.me`
 
 trap "rm -f $tempfile1 $tempfile2 $tempfile3 $tempfile4" 0 1 2 5 15
 
