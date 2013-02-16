@@ -556,7 +556,7 @@ _install() {
 		echo "import sql ok";
 
 		cp /usr/local/etc/zpanel/panel/etc/apps/webmail/config/db.inc.php.dist /usr/local/etc/zpanel/panel/etc/apps/webmail/config/db.inc.php
-		sed -i "" "21 s/.*/&\$rcmail_config[\'db_dsnw\'] = \'mysql\:\/\/${MYSQL_ZPANEL_USER}\:${MYSQL_ZPANEL_USER}\@localhost\/zpanel_roundcube';/" /usr/local/etc/zpanel/panel/etc/apps/webmail/config/db.inc.php
+		sed -i "" "25 s/.*/&\$rcmail_config[\'db_dsnw\'] = \'mysql\:\/\/${MYSQL_ZPANEL_USER}\:${MYSQL_ZPANEL_PASSWORD}\@localhost\/zpanel_roundcube';/" /usr/local/etc/zpanel/panel/etc/apps/webmail/config/db.inc.php
 
 
 		#============================
