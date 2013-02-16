@@ -375,8 +375,8 @@ _install() {
 			a=( $line );
 			if [[ "${a[O]]}" = "PHPTIMEZONE" ]]; then
 				export ${a[O]]}='"'${a[1]]}'"';
-			fi
-			export ${a[O]]}=${a[1]]}
+			else 
+				export ${a[O]]}=${a[1]]};
 		done < $1
 #
 		##!/usr/local/bin/bash
