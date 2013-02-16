@@ -191,7 +191,7 @@ _apache () {
 			--title " Apache configuration " --clear \
 			--form "Enter the apache info:" 0 0 0 \
 				"ZpanelX Vhost (without domain) :" 1 1 "panel" 1 30 25 30  \
-				"Server IP                      :" 2 1 "${IP}" 2 30 25 30  2> $tempfile2
+				"Server IP                      :" 2 1 "$IP" 2 30 25 30  2> $tempfile2
 	retval=$?
 	case $retval in
 	  0) a=( `cat ${tempfile2}` );
