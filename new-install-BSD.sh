@@ -47,8 +47,9 @@ _defaultyn () {
                 --yesno "Are you sure you want to use this configuration?" 0 0
 		retval=$?
 		case $retval in
-			0) _install;;
-			1) _menuperso;;
+			0) _install $tempfile1;;
+			1) _main;;
+#_menuperso;;
 			255) _escape _defaultyn;;
 		esac
 }
@@ -348,9 +349,9 @@ _installdefault () {
 	sed -i "" "11,11s/SERVERIP/${IP}/g" $tempfile1 ;
 	sed -i "" "13,13s/postfixname/${HOSTNAME}/g" $tempfile1 ;
 	sed -i "" "14,14s/postfixdomain/${DOMAIN}/g" $tempfile1 ;
-	_phptimezone $tempfile1;
-	_view $tempfile1;
-	_install;
+	_phptimezone $tempfile1 ;
+	_view $tempfile1 ;
+	_defaultyn;
 }
 
 _installperso () {
@@ -364,18 +365,19 @@ _installperso () {
 	_ftpv6;
 	_phptimezone $tempfile3;
 	_view $tempfile3;
-	_install;
+#TODO add confirmation and redirect menuperso if !=
+	_install $tempfile3;
 }
 
 _install() {
-	## Export des variable
+	## Export des variables
 		while read line ;do
 			a=( $line );
 			if [[ "${a[O]]}" = "PHPTIMEZONE" ]]; then
 				export ${a[O]]}='"'${a[1]]}'"';
 			fi
 			export ${a[O]]}=${a[1]]}
-		done < ${tempfile1}
+		done < $1
 #
 		##!/usr/local/bin/bash
 #
