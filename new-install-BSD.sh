@@ -540,7 +540,7 @@ _install() {
 		echo "GRANT ALL PRIVILEGES ON \`zpanel\_%\`.* TO '${MYSQL_ZPANEL_USER}'@'localhost';" | mysql -uroot -p${MYSQL_ROOT_PASSWORD} ;
 		sed -i "" "s/root/${MYSQL_ZPANEL_USER}/g" /usr/local/etc/zpanel/panel/cnf/db.php ;
 		 
-		sed -i "" "s/\$pass\ \=\ \"\"\;/\$pass\ =\ \"${MYSQL_ZPANEL_USER}\";/g" /usr/local/etc/zpanel/panel/cnf/db.php
+		sed -i "" "s/YOUR_ROOT_MYSQL_PASSWORD/${MYSQL_ZPANEL_USER}/g" /usr/local/etc/zpanel/panel/cnf/db.php
 		echo "Zpanel ok";
 		# Import zpanel_core database
 		mysql -uroot -p${MYSQL_ROOT_PASSWORD} < /usr/local/etc/zpanel/configs/zpanel_core.sql
