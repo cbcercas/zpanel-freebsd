@@ -531,17 +531,19 @@ _install() {
 
 		#============================
 		# ZPANEL DATABASE CONFIGURATION :
-		#============================
+		#============================		
+		
 		if [ ${MYSQL_HOST} != 'localhost' ]; then
 		sed -i "" "s/localhost/${MYSQL_HOST}/g" /usr/local/etc/zpanel/panel/cnf/db.php ;
 		fi
 		## Create USERDB
-		echo "GRANT USAGE ON *.* TO '${MYSQL_ZPANEL_USER}'@'localhost' IDENTIFIED BY '${MYSQL_ZPANEL_USER}';" | mysql -uroot -p${MYSQL_ROOT_PASSWORD} ;
+		echo "GRANT USAGE ON *.* TO '${MYSQL_ZPANEL_USER}'@'localhost' IDENTIFIED BY '${MYSQL_ZPANEL_PASSWORD}';" | mysql -uroot -p${MYSQL_ROOT_PASSWORD} ;
 		echo "GRANT ALL PRIVILEGES ON \`zpanel\_%\`.* TO '${MYSQL_ZPANEL_USER}'@'localhost';" | mysql -uroot -p${MYSQL_ROOT_PASSWORD} ;
+		
 		sed -i "" "s/root/${MYSQL_ZPANEL_USER}/g" /usr/local/etc/zpanel/panel/cnf/db.php ;
-		 
-		sed -i "" "s/YOUR_ROOT_MYSQL_PASSWORD/${MYSQL_ZPANEL_USER}/g" /usr/local/etc/zpanel/panel/cnf/db.php
-		echo "Zpanel ok";
+		sed -i "" "s/YOUR_ROOT_MYSQL_PASSWORD/${MYSQL_ZPANEL_PASSWORD}/g" /usr/local/etc/zpanel/panel/cnf/db.php;
+		echo "Zpanel DB ok";
+
 		# Import zpanel_core database
 		mysql -uroot -p${MYSQL_ROOT_PASSWORD} < /usr/local/etc/zpanel/configs/zpanel_core.sql
 		# Import zpanel_postfix database
@@ -598,7 +600,7 @@ _install() {
 					sed -i -e "s/localhost/${MYSQL_HOST}/g" $file
 					sed -i -e "s/zpanel_postfix/${DBNAMEPOSTFIX}/g" $file
 					sed -i -e "s/zpanel/${MYSQL_ZPANEL_USER}/g" $file
-					sed -i -e "s/PASSDB/${MYSQL_ZPANEL_USER}/g" $file
+					sed -i -e "s/PASSDB/${MYSQL_ZPANEL_PASSWORD}/g" $file
 				done
 
 			for file in /usr/local/etc/zpanel/configs/postfix/conf/mysql*
@@ -606,7 +608,7 @@ _install() {
 					sed -i -e "s/localhost/${MYSQL_HOST}/g" $file
 					sed -i -e "s/zpanel_postfix/${DBNAMEPOSTFIX}/g" $file
 					sed -i -e "s/zpanel/${MYSQL_ZPANEL_USER}/g" $file
-					sed -i -e "s/PASSDB/${MYSQL_ZPANEL_USER}/g" $file
+					sed -i -e "s/PASSDB/${MYSQL_ZPANEL_PASSWORD}/g" $file
 				done
 
 		mv /usr/local/etc/postfix/main.cf /usr/local/etc/postfix/main.old
@@ -632,7 +634,7 @@ _install() {
 		        echo "GRANT ALL PRIVILEGES ON zpanel_proftpd.* TO '${MYSQL_PROFTPD_USER}'@'localhost';" | mysql -uroot -p${MYSQL_ROOT_PASSWORD};
 		        else
 		                MYSQL_PROFTPD_USER=$MYSQL_ZPANEL_USER;
-		                MYSQL_PROFTPD_PASSWORD=$MYSQL_ZPANEL_USER;
+		                MYSQL_PROFTPD_PASSWORD=$MYSQL_ZPANEL_PASSWORD;
 		        ##sed -i -e "s/root/${USERDB}/g" /usr/local/etc/zpanel/panel/cnf/db.php
 		fi
 		        sed -i -e "s/FTPUSERDB/${MYSQL_PROFTPD_USER}/g" /usr/local/etc/zpanel/configs/proftpd/proftpd-mysql.conf
