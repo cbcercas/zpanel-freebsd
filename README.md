@@ -11,16 +11,14 @@ Requirement:
 
  INSTALL
 =========
-mkdir -p /usr/local/src/zpanelx && cd /usr/local/src/  
-fetch http://sourceforge.net/projects/zpanelcp/files/releases/10.0.0/zpanelx-1_0_0.zip  
-fetch https://github.com/cbcercas/zpanel-freebsd/archive/master.zip  
-unzip -d zpanelx zpanelx-1_0_0.zip && unzip master.zip  
-cp -R zpanel-freebsd-master/* zpanelx/etc/build/  
-rm -R zpanel-freebsd-master master.zip zpanelx-1_0_0.zip  
-cd zpanelx/etc/build/  
-vi install-BSD.sh  
-and configure all variable as you need, then with root account  
-./install-BSD.sh  
+with root account or sudo
+mkdir -p /usr/local/src/ && cd /usr/local/src/ 
+fetch https://github.com/cbcercas/zpanel-freebsd/archive/test.zip && unzip test.zip
+fetch https://github.com/bobsta63/zpanelx/archive/master.zip && unzip master.zip $$ mv zpanelx-master zpanelx-10.0.2 
+cp -R zpanel-freebsd-test/* zpanelx-10.0.2/etc/build/ && rm -R zpanel-freebsd-test test.zip master.zip && cd zpanelx-10.0.2/etc/build/
+./new-install-BSD.sh  
+
+and configure as you need    
 
  What it does?
 ===============
@@ -33,10 +31,10 @@ and configure all variable as you need, then with root account
  Advertissement:
 =================
 This script install the minimum to have a working ZpanelX,  
-but it doesn't install any security (like fail2ban, postscreen, amavisd, clamav ...).   
+but it doesn't install (for the moment) any security (like fail2ban, postscreen, amavisd, clamav ...).   
 
 
-
+	
 If you have any suggestion send me a mail
 
 If you like this script, please give me a beer
