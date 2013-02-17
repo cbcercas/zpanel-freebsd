@@ -335,7 +335,6 @@ _menuperso () {
 }
 
 _installdefault () {
-	#_menuperso;
 	RMDP=`tr -d -c "a-zA-Z0-9" < /dev/urandom | head -c 10`
 	ZMDP=`tr -d -c "a-zA-Z0-9" < /dev/urandom | head -c 10`
 	DOMAIN=`echo $HOSTNAME |awk -F. '{$1="";OFS="." ; print $0}' | sed 's/^.//' `
@@ -504,7 +503,7 @@ _install() {
 		cp -R -v config_packs/freebsd/* /usr/local/etc/zpanel/configs
 		echo "Complete!"
 		echo "Setting permissions.."
-		## NEED more security 644?
+		## NEED more security?
 		chgrp -R www /usr/local/etc/zpanel/
 		chmod -R 774 /usr/local/etc/zpanel/
 		chmod -R 774 /var/zpanel/
@@ -528,7 +527,6 @@ _install() {
 		#	MYSQL Database
 		#============================
 		# create mysql root password
-		echo ${MYSQL_ROOT_PASSWORD}
 		mysqladmin -u root password ${MYSQL_ROOT_PASSWORD}
 
 		echo "sql set password ok";
