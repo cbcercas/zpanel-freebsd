@@ -377,6 +377,7 @@ _install() {
 				export ${a[O]]}='"'${a[1]]}'"';
 			else 
 				export ${a[O]]}=${a[1]]};
+			fi
 		done < $1
 #
 		##!/usr/local/bin/bash
