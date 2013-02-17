@@ -566,7 +566,8 @@ _install() {
 		echo "127.0.0.1 $HOSTNAME" >> /etc/hosts
 		echo "::1 $HOSTNAME" >> /etc/hosts
 		ln -s /usr/local/etc/zpanel/configs/apache/httpd.conf /usr/local/etc/apache22/Includes/zpanel.conf
-		#sed -i "" "s/HOSTNAME/${HOSTNAME}/g" /usr/local/etc/zpanel/configs/apache/httpd-vhosts.conf ;
+		sed -i "" "s/HOSTNAME/${ZPANEL_VHOST}/g" /usr/local/etc/zpanel/configs/apache/httpd-vhosts.conf ;
+
 		#*Set ZPanel Network info and compile the default vhost.conf
 		/usr/local/etc/zpanel/panel/bin/setso --set zpanel_domain $ZPANEL_VHOST
 		/usr/local/etc/zpanel/panel/bin/setso --set server_ip $SERVER_IP
