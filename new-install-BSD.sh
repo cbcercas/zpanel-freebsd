@@ -406,6 +406,9 @@ _install() {
 		##============================
 		##Install the base packages:-
 		##============================
+		cd /usr/ports/archivers/zip
+		make BATCH=yes install clean
+
 		## Proftpd
 		cd /usr/ports/databases/proftpd-mod_sql_mysql
 		make BATCH=yes install clean
