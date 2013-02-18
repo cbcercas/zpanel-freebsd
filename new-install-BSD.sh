@@ -527,7 +527,7 @@ _install() {
 		#	MYSQL Database
 		#============================
 		# create mysql root password
-		mysqladmin -u root password ${MYSQL_ROOT_PASSWORD}
+		mysqladmin -u root password ${MYSQL_ROOT_PASSWORD};
 
 		echo "sql set password ok";
 
