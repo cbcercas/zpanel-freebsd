@@ -569,12 +569,6 @@ _install() {
 		echo "::1 $HOSTNAME" >> /etc/hosts
 		ln -s /usr/local/etc/zpanel/configs/apache/httpd.conf /usr/local/etc/apache22/Includes/zpanel.conf
 		sed -i "" "s/HOSTNAME/${ZPANEL_VHOST}/g" /usr/local/etc/zpanel/configs/apache/httpd-vhosts.conf ;
-
-		#*Set ZPanel Network info and compile the default vhost.conf
-		/usr/local/etc/zpanel/panel/bin/setso --set zpanel_domain $ZPANEL_VHOST
-		/usr/local/etc/zpanel/panel/bin/setso --set server_ip $SERVER_IP
-		php /usr/local/etc/zpanel/panel/bin/daemon.php > log.log
-
 		echo "Apache ok";
 
 		#============================
@@ -677,7 +671,13 @@ _install() {
 		cc -o /usr/local/etc/zpanel/panel/bin/zsudo /usr/local/etc/zpanel/configs/bin/zsudo.c
 		chown root /usr/local/etc/zpanel/panel/bin/zsudo
 		chmod +s /usr/local/etc/zpanel/panel/bin/zsudo
+		
+
 		echo "zsudo ok";
+		#*Set ZPanel Network info and compile the default vhost.conf
+		/usr/local/etc/zpanel/panel/bin/setso --set zpanel_domain $ZPANEL_VHOST
+		/usr/local/etc/zpanel/panel/bin/setso --set server_ip $SERVER_IP
+		php /usr/local/etc/zpanel/panel/bin/daemon.php > log.log
 
 		#Setup the CRON job for the zdaemon:-
 		#====================================
