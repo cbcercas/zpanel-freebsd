@@ -11,14 +11,14 @@ Requirement:
 
  INSTALL
 =========
-with root account or sudo
-mkdir -p /usr/local/src/ && cd /usr/local/src/ 
-fetch https://github.com/cbcercas/zpanel-freebsd/archive/test.zip && unzip test.zip
-fetch https://github.com/bobsta63/zpanelx/archive/master.zip && unzip master.zip
-mv zpanelx-master zpanelx-10.0.2 
-cp -R zpanel-freebsd-test/* zpanelx-10.0.2/etc/build/
-rm -R zpanel-freebsd-test test.zip master.zip 
-cd zpanelx-10.0.2/etc/build/
+with root account or sudo  
+mkdir -p /usr/local/src/ && cd /usr/local/src/  
+fetch https://github.com/cbcercas/zpanel-freebsd/archive/test.zip && unzip test.zip  
+fetch https://github.com/bobsta63/zpanelx/archive/master.zip && unzip master.zip  
+mv zpanelx-master zpanelx-10.0.2  
+cp -R zpanel-freebsd-test/* zpanelx-10.0.2/etc/build/  
+rm -R zpanel-freebsd-test test.zip master.zip  
+cd zpanelx-10.0.2/etc/build/  
 ./new-install-BSD.sh  
 
 and configure as you need    
