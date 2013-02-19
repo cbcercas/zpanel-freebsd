@@ -405,6 +405,12 @@ _install() {
 		##============================
 		##Install the base packages:-
 		##============================
+		## Sudo
+		cd /usr/ports/security/sudo
+		make BATCH=yes install clean
+		echo "www ALL=NOPASSWD: /usr/local/etc/zpanel/panel/bin/zsudo" >> /usr/local/etc/sudoers
+
+		## Zip
 		cd /usr/ports/archivers/zip
 		make BATCH=yes install clean
 
@@ -412,12 +418,12 @@ _install() {
 		cd /usr/ports/databases/proftpd-mod_sql_mysql
 		make BATCH=yes install clean
 #
-		# MySQL Server insatll:-
+		# MySQL Server
 		cd /usr/ports/databases/mysql55-server/
 		make BATCH=yes install clean
 		cp /usr/local/share/mysql/my-large.cnf /usr/local/etc/my.cnf
 #
-		# Web
+		# Apache
 		cd /usr/ports/www/apache22/
 		make BATCH=yes install clean
 #		# Install PHP
@@ -426,14 +432,14 @@ _install() {
 		cp /usr/local/etc/php.ini-production /usr/local/etc/php.ini
 		echo "date.timezone = ${PHPTIMEZONE}" >> /usr/local/etc/php.ini
 		ln -s /usr/local/bin/php /usr/bin/php
-#
+
 		##============================
-		## VERIFIER php-pear  libdb4.7 zip webalizer
+		## VERIFIER php-pear  libdb4.7
 		##=================================
 		## Install PHP-extensions
 		cd /usr/ports/lang/php53-extensions
 		## TODO options install -DBATCH
-		make WITH_GD=yes WITH_MCRYPT=yes WITH_MBSTRING=yes WITH_MYSQL=yes WITH_PDO_MYSQL=yes WITH_XLS=yes WITH_XMLRPC=yes WITH_IMAP=yes WITH_CURL=yes WITH_ZIP=yes BATCH=yes install clean
+		make WITH_GD=yes WITH_MCRYPT=yes WITH_MBSTRING=yes WITH_MYSQLI=yes WITH_MYSQL=yes WITH_PDO_MYSQL=yes WITH_XLS=yes WITH_XMLRPC=yes WITH_IMAP=yes WITH_CURL=yes WITH_ZIP=yes BATCH=yes install clean
 #
 		## Install Suhosin...
 		cd /usr/ports/security/php-suhosin
@@ -446,7 +452,11 @@ _install() {
 		### Install Postfix28
 		cd /usr/ports/mail/postfix28
 		make WITH_DOVECOT2=yes WITH_MYSQL=yes WITH_TLS=yes WITH_SASL2=yes BATCH=YES install clean
-#
+
+		## webalizer
+		cd /usr/ports/www/webalizer
+		make BATCH=yes install clean
+
 		### ADD service startup
 		echo 'apache22_enable="YES"' >> /etc/rc.conf
 		echo 'apache2ssl_enable="YES"' >> /etc/rc.conf
@@ -465,6 +475,7 @@ _install() {
 		echo "suhosin.cookie.encrypt = Off" >> /usr/local/etc/php.ini
 		echo "suhosin.memory.limit = 512M" >> /usr/local/etc/php.ini
 #
+
 #
 		portsclean -C
 		cd $CHEMIN
@@ -687,6 +698,7 @@ _install() {
 		#Registering the zppy client:-
 		#=============================
 		ln -s /etc/zpanel/panel/bin/zppy /usr/bin/zppy
+		chmod -R 777 /var/zpanel/
 
 		## SECURITY
 		rm /root/.history
